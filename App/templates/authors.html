@@ -1,0 +1,684 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="zxx">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Pustok - Book Store HTML Template
+  </title>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <!-- Use Minified Plugins Version For Fast Page Load -->
+  <link href="{% static 'css/plugins.css' %}" media="screen" rel="stylesheet" type="text/css"/>
+  <link href="{% static 'css/main.css' %}" media="screen" rel="stylesheet" type="text/css"/>
+  <link href="{% static 'image/favicon.ico' %}" rel="shortcut icon" type="image/x-icon"/>
+ </head>
+ <body>
+  <div class="site-wrapper" id="top">
+   <div class="site-header header-2 mb--20 d-none d-lg-block">
+    <div class="header-middle pt--10 pb--10">
+     <div class="container">
+      <div class="row align-items-center">
+       <div class="col-lg-3">
+        <a class="site-brand" href="index.html">
+          {% for detail in details %}
+         <img alt="" src="{{detail.image.url}}"/>
+          {% endfor %}
+        </a>
+       </div>
+       <div class="col-lg-5">
+
+       </div>
+
+      </div>
+     </div>
+    </div>
+    <div class="header-bottom bg-primary">
+     <div class="container">
+      <div class="row align-items-center">
+       <div class="col-lg-3">
+        <nav class="category-nav white-nav">
+         <div>
+          <a class="category-trigger" href="javascript:void(0)">
+           <i class="fa fa-bars">
+           </i>
+           Browse
+                                        categories
+          </a>
+          <ul class="category-menu">
+            {% for cat in categ %}
+           <li class="cat-item">
+            <a href="#">
+             {{cat.name}}
+            </a>
+           </li>
+           {% endfor %}
+          </ul>
+         </div>
+        </nav>
+       </div>
+       <div class="col-lg-3">
+        <div class="header-phone color-white">
+         <div class="icon">
+          <i class="fas fa-headphones-alt">
+          </i>
+         </div>
+         <div class="text">
+          <p>
+           Free Support 24/7
+          </p>
+          <p class="font-weight-bold number">
+           +01-202-555-0181
+          </p>
+         </div>
+        </div>
+       </div>
+       <div class="col-lg-6">
+        <div class="main-navigation flex-lg-right">
+         <ul class="main-menu menu-right main-menu--white li-last-0">
+          <li class="menu-item has-children">
+           <a href="javascript:void(0)">
+            Books
+            <i class="fas fa-chevron-down dropdown-arrow">
+            </i>
+           </a>
+           <ul class="sub-menu">
+            <li>
+             <a href="book_list">
+              List of Books
+             </a>
+            </li>
+            <li>
+             <a href="book_allotment">
+              Books Allotment
+             </a>
+            </li>
+            <li>
+             <a href="book_series">
+              Book Series
+             </a>
+            </li>
+            <li>
+             <a href="book_genre">
+              Genres
+             </a>
+            </li>
+            <li>
+             <a href="book_lang">
+               Book Languages
+             </a>
+            </li>
+           </ul>
+          </li>
+          <!-- Shop -->
+          <li class="menu-item has-children mega-menu">
+           <a href="javascript:void(0)">
+            Users
+            <i class="fas fa-chevron-down dropdown-arrow">
+            </i>
+           </a>
+           <ul class="sub-menu four-column">
+            <li class="cus-col-25">
+             <h3 class="menu-title">
+              <a href="javascript:void(0)">
+               All Users
+              </a>
+             </h3>
+             <ul class="mega-single-block">
+              <li>
+               <a href="members">
+                Members
+               </a>
+              </li>
+              <li>
+               <a href="publisher">
+                Publishers
+               </a>
+              </li>
+              <li>
+               <a href="author">
+                Author
+               </a>
+              </li>
+             </ul>
+            </li>
+            <li class="cus-col-25">
+             <h3 class="menu-title">
+              <a href="javascript:void(0)">
+               Roles
+              </a>
+             </h3>
+             <ul class="mega-single-block">
+              <li>
+               <a href="roles">
+                Liberian
+               </a>
+              </li>
+             </ul>
+            </li>
+            <li class="cus-col-25">
+             <h3 class="menu-title">
+              <a href="javascript:void(0)">
+            Membership Plans
+              </a>
+             </h3>
+             <ul class="mega-single-block">
+              <li>
+               <a href="product-details.html">
+                Gold Plan
+               </a>
+              </li>
+              <li>
+               <a href="product-details-affiliate.html">
+                Silver Plan
+               </a>
+              </li>
+             </ul>
+            </li>
+
+           </ul>
+          </li>
+          <li class="menu-item">
+           <a href="settings">
+            Settings
+           </a>
+          </li>
+          <li class="menu-item">
+           <a href="contact">
+            Contact
+           </a>
+          </li>
+         </ul>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+    <div class="header-bottom pb--10">
+     <div class="container">
+      <div class="row align-items-center">
+       <div class="col-lg-5">
+        <div class="header-search-block">
+         <input placeholder="Search for Books" type="text"/>
+         <button>
+          Search
+         </button>
+        </div>
+       </div>
+
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="site-mobile-menu">
+    <header class="mobile-header d-block d-lg-none pt--10 pb-md--10">
+     <div class="container">
+      <div class="row align-items-sm-end align-items-center">
+       <div class="col-md-4 col-7">
+        <a class="site-brand" href="index.html">
+         <img alt="" src="{% static 'image/{{detail.image.url}}' %}"/>
+        </a>
+       </div>
+       <div class="col-md-5 order-3 order-md-2">
+        <nav class="category-nav">
+         <div>
+          <a class="category-trigger" href="javascript:void(0)">
+           <i class="fa fa-bars">
+           </i>
+           Browse
+										categories
+          </a>
+          <ul class="category-menu">
+            {% for list in lists %}
+           <li class="cat-item">
+            <a class="js-expand-hidden-menu" href="#">
+            {{list.name}}
+            </a>
+           </li>
+           {% endfor %}
+          </ul>
+         </div>
+        </nav>
+       </div>
+       <div class="col-md-3 col-5 order-md-3 text-right">
+        <div class="mobile-header-btns header-top-widget">
+         <ul class="header-links">
+          <li class="sin-link">
+          </li>
+          <li class="sin-link">
+           <a class="link-icon hamburgur-icon off-canvas-btn" href="javascript:">
+            <i class="ion-navicon">
+            </i>
+           </a>
+          </li>
+         </ul>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <!--Off Canvas Navigation Start-->
+    <aside class="off-canvas-wrapper">
+     <div class="btn-close-off-canvas">
+      <i class="ion-android-close">
+      </i>
+     </div>
+     <div class="off-canvas-inner">
+      <!-- search box start -->
+      <!-- search box end -->
+      <!-- mobile menu start -->
+      <div class="mobile-navigation">
+       <!-- mobile menu navigation start -->
+       <nav class="off-canvas-nav">
+        <ul class="mobile-menu main-mobile-menu">
+         <li class="menu-item-has-children">
+          <a href="#">
+           Books
+          </a>
+          <ul class="sub-menu">
+           <li>
+            <a href="book_list">
+             List Of Books
+            </a>
+           </li>
+           <li>
+            <a href="book_allotment">
+             Books Allotment
+            </a>
+           </li>
+           <li>
+            <a href="book_series">
+             Book Series
+            </a>
+           </li>
+           <li>
+            <a href="book_genre">
+             Genres
+            </a>
+           </li>
+           <li>
+            <a href="book_lang">
+              Book Languages
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li class="menu-item-has-children">
+          <a href="#">
+           Users
+          </a>
+          <ul class="sub-menu">
+           <li class="menu-item-has-children">
+            <a href="#">
+             All Users
+            </a>
+            <ul class="sub-menu">
+             <li>
+              <a href="members">
+               Members
+              </a>
+             </li>
+             <li>
+              <a href="publisher">
+               Publishers
+              </a>
+             </li>
+             <li>
+              <a href="author">
+               Authors
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li class="menu-item-has-children">
+            <a href="#">
+             Roles
+            </a>
+            <ul class="sub-menu">
+             <li>
+              <a href="roles">
+               Liberian
+              </a>
+             </li>
+            </ul>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="contact.html">
+           Membership Plans
+          </a>
+         </li>
+         <li>
+          <a href="contact">
+           Contact
+          </a>
+         </li>
+         <li>
+          <a href="settings">
+           Settings
+          </a>
+         </li>
+        </ul>
+       </nav>
+       <!-- mobile menu navigation end -->
+      </div>
+      <!-- mobile menu end -->
+      <nav class="off-canvas-nav">
+       <ul class="mobile-menu menu-block-2">
+        <li class="menu-item-has-children">
+
+        </li>
+        <li class="menu-item-has-children">
+
+        </li>
+        <li class="menu-item-has-children">
+
+         <ul class="sub-menu">
+          <li>
+
+          </li>
+          <li>
+
+          </li>
+          <li>
+
+          </li>
+          <li>
+
+          </li>
+         </ul>
+        </li>
+       </ul>
+      </nav>
+      <div class="off-canvas-bottom">
+       <div class="contact-list mb--10">
+
+
+       </div>
+       <div class="off-canvas-social">
+
+       </div>
+      </div>
+     </div>
+    </aside>
+    <!--Off Canvas Navigation End-->
+   </div>
+   <div class="sticky-init fixed-header common-sticky">
+    <div class="container d-none d-lg-block">
+     <div class="row align-items-center">
+      <div class="col-lg-8">
+
+      </div>
+     </div>
+    </div>
+   </div>
+   <section class="breadcrumb-section">
+    <h2 class="sr-only">
+     Site Breadcrumb
+    </h2>
+    <div class="container">
+     <div class="breadcrumb-contents">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+         <a href="index.html">
+          Home
+         </a>
+        </li>
+        <li class="breadcrumb-item active">
+         Author
+        </li>
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </section>
+   <!-- Wishlist Page Start -->
+   <div class="cart_area inner-page-sec-padding-bottom">
+    <div class="container">
+     <div class="row">
+      <div class="col-12">
+       <form action="./">
+        <!-- Cart Table -->
+        <div class="cart-table table-responsive">
+         <table class="table">
+          <thead>
+           <tr>
+            <th class="pro-title">
+            Author
+            </th>
+            <th class="pro-title">
+            Email
+            </th>
+            <th class="pro-remove">
+             Action
+            </th>
+           </tr>
+          </thead>
+          {% for book in books %}
+          <tbody>
+           <tr>
+            <td class="pro-title">
+             <a href="#">
+              {{book.full_name}}
+             </a>
+            </td>
+            <td class="pro-title">
+             <a href="#">
+            {{book.email}}
+             </a>
+            </td>
+              <td class="pro-remove">
+                <a href="#">
+                  <i class="far fa-trash-alt"></i>
+                </a>
+                <a href="#">
+                    <i class="">
+                    </i>
+                </a>
+              </td>
+           </tr>
+          </tbody>
+          {% endfor %}
+         </table>
+        </div>
+       </form>
+      </div>
+     </div>
+     <div class="row pt--30">
+      <div class="col-md-12">
+       <div class="pagination-block">
+        <ul class="pagination-btns flex-center">
+         <li>
+          <a class="single-btn prev-btn" href="">
+           |
+           <i class="zmdi zmdi-chevron-left">
+           </i>
+          </a>
+         </li>
+         <li>
+          <a class="single-btn prev-btn" href="">
+           <i class="zmdi zmdi-chevron-left">
+           </i>
+          </a>
+         </li>
+         <li class="active">
+          <a class="single-btn" href="">
+           1
+          </a>
+         </li>
+         <li>
+          <a class="single-btn" href="">
+           2
+          </a>
+         </li>
+         <li>
+          <a class="single-btn" href="">
+           3
+          </a>
+         </li>
+         <li>
+          <a class="single-btn" href="">
+           4
+          </a>
+         </li>
+         <li>
+          <a class="single-btn next-btn" href="">
+           <i class="zmdi zmdi-chevron-right">
+           </i>
+          </a>
+         </li>
+         <li>
+          <a class="single-btn next-btn" href="">
+           <i class="zmdi zmdi-chevron-right">
+           </i>
+           |
+          </a>
+         </li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- Cart Page End -->
+  </div>
+  <!--=================================
+  Brands Slider
+===================================== -->
+  <section class="section-margin">
+   <h2 class="sr-only">
+    Brand Slider
+   </h2>
+   <div class="container">
+    <div class="brand-slider sb-slick-slider border-top border-bottom" data-slick-responsive='[
+                {"breakpoint":992, "settings": {"slidesToShow": 4} },
+                {"breakpoint":768, "settings": {"slidesToShow": 3} },
+                {"breakpoint":575, "settings": {"slidesToShow": 3} },
+                {"breakpoint":480, "settings": {"slidesToShow": 2} },
+                {"breakpoint":320, "settings": {"slidesToShow": 1} }
+            ]' data-slick-setting='{
+                                            "autoplay": true,
+                                            "autoplaySpeed": 8000,
+                                            "slidesToShow": 6
+                                            }'>
+     <div class="single-slide">
+      <img alt="" src="{% static 'image/others/brand-1.jpg' %}"/>
+     </div>
+     <div class="single-slide">
+      <img alt="" src="{% static 'image/others/brand-2.jpg' %}"/>
+     </div>
+     <div class="single-slide">
+      <img alt="" src="{% static 'image/others/brand-3.jpg' %}"/>
+     </div>
+     <div class="single-slide">
+      <img alt="" src="{% static 'image/others/brand-4.jpg' %}"/>
+     </div>
+     <div class="single-slide">
+      <img alt="" src="{% static 'image/others/brand-5.jpg' %}"/>
+     </div>
+     <div class="single-slide">
+      <img alt="" src="{% static 'image/others/brand-6.jpg' %}"/>
+     </div>
+     <div class="single-slide">
+      <img alt="" src="{% static 'image/others/brand-1.jpg' %}"/>
+     </div>
+     <div class="single-slide">
+      <img alt="" src="{% static 'image/others/brand-2.jpg' %}"/>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!--=================================
+    Footer Area
+===================================== -->
+<center>
+<div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb--30 mb-lg--0">
+ <!-- Login Form s-->
+ <form method="POST">
+   {% csrf_token %}
+  <div class="login-form">
+   <h4 class="login-title">
+  New Author
+   </h4>
+   <p>
+    <span class="font-weight-bold">
+     Add New Author
+    </span>
+   </p>
+   <div class="row">
+    <div class="col-12 mb--20">
+     <label for="email">
+      Full Name
+     </label>
+     <input class="mb-0 form-control" id="auth_name" name="full_name" type="text"/>
+    </div>
+    <div class="col-12 mb--20">
+     <label for="email">
+      Email
+     </label>
+     <input class="mb-0 form-control" id="auth_name" name="email" type="text"/>
+    </div>
+    <div class="col-md-12">
+       <button class="btn btn-outlined" type="submit">
+           Submit
+       </button>
+   </div>
+   </div>
+  </div>
+ </form>
+</div>
+</center>
+<footer class="site-footer">
+ <div class="container">
+  <div class="row justify-content-between section-padding">
+   <div class="col-xl-3 col-lg-4 col-sm-6">
+    <div class="single-footer pb--40">
+
+
+    </div>
+   </div>
+   <div class="col-xl-3 col-lg-2 col-sm-6">
+
+   </div>
+   <div class="col-xl-3 col-lg-2 col-sm-6">
+
+   </div>
+   <div class="col-xl-3 col-lg-4 col-sm-6">
+   </div>
+  </div>
+ </div>
+ <div class="footer-bottom">
+  <div class="container">
+   <p class="copyright-heading">
+    Suspendisse in auctor augue. Cras fermentum est ac fermentum tempor. Etiam
+                  vel
+                  magna volutpat, posuere eros
+   </p>
+   <a class="payment-block" href="#">
+    <img alt="" src="{% static 'image/icon/payment.png' %}"/>
+   </a>
+   <p class="copyright-text">
+    Copyright Â© 2019
+    <a class="author" href="#">
+     Pustok
+    </a>
+    . All Right Reserved.
+    <br/>
+    Design By Pustok
+   </p>
+  </div>
+ </div>
+</footer>
+<!-- Use Minified Plugins Version For Fast Page Load -->
+<script src="{% static 'js/plugins.js' %}">
+</script>
+<script src="{% static 'js/ajax-mail.js' %}">
+</script>
+<script src="{% static 'js/custom.js' %}">
+</script>
+</body>
+</html>
